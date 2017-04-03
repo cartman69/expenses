@@ -88,3 +88,7 @@
 [2017-04-03 13:32:26] doctrine.DEBUG: INSERT INTO expense_type (code, name, description) VALUES (?, ?, ?) {"1":"Code of this type","2":"Name of this type","3":"Ma description"} []
 [2017-04-03 13:32:26] doctrine.DEBUG: "COMMIT" [] []
 [2017-04-03 13:32:27] request.INFO: Matched route "_wdt". {"route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"3b3508","_route":"_wdt"},"request_uri":"http://depenses.dev/app_dev.php/_wdt/3b3508"} []
+[2017-04-03 13:48:12] php.DEBUG: symlink(): Could not fetch file information(error 3) {"type":2,"file":"Z:\\laragon\\www\\expenses\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Filesystem\\Filesystem.php","line":334,"level":28928} []
+[2017-04-03 13:48:12] php.DEBUG: symlink(): Cannot create symlink, error code(1) {"type":2,"file":"Z:\\laragon\\www\\expenses\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Filesystem\\Filesystem.php","line":334,"level":28928} []
+[2017-04-03 13:48:13] php.DEBUG: symlink(): Could not fetch file information(error 3) {"type":2,"file":"Z:\\laragon\\www\\expenses\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Filesystem\\Filesystem.php","line":334,"level":28928} []
+[2017-04-03 13:48:13] php.DEBUG: symlink(): Cannot create symlink, error code(1) {"type":2,"file":"Z:\\laragon\\www\\expenses\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Filesystem\\Filesystem.php","line":334,"level":28928} []
