@@ -1,0 +1,26 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jtricard
+ * Date: 27/03/2017
+ * Time: 11:53
+ */
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+class TypeDepenseController
+{
+
+    public function listAction()
+    {
+        /**
+         * @Route("/typedepense/list", name="liste_depenses")
+         */
+        return new Response(
+            '<html><body><h1>Liste des types de dépenses</h1></body></html>'
+        );
+    }
+}
