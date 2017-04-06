@@ -11,20 +11,24 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
-class TypeDepenseController extends Controller
+class ExpenseTypeController extends Controller
 {
     /**
-     * @Route("/typedepense/list")
+     * @Route("/expensetype/list")
      */
     public function listAction()
     {
-        return $this->render('AppBundle:TypeDepense:list.html.twig', array(
-            // ...
+        $expenseTypes = $this->getDoctrine()
+            ->getRepository('AppBundle:Expense\Type')
+            ->findAll();
+
+        return $this->render('AppBundle:ExpenseType:list.html.twig', array(
+            'expenseTypes' => $expenseTypes
         ));
     }
 
     /**
-     * @Route("/typedepense/create")
+     * @Route("/expensetype/create", name="expenseTypeCreate")
      */
     public function createAction(Request $request)
     {
@@ -43,7 +47,6 @@ class TypeDepenseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            echo "Ici!!!";
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $expenseType = $form->getData();
@@ -54,12 +57,10 @@ class TypeDepenseController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($expenseType);
             $em->flush();
-
-            //return $this->redirectToRoute('task_success');
+            return $this->listAction();
         }
-        echo "Après putain de merde!!!";
 
-        return $this->render('AppBundle:TypeDepense:create.html.twig', array(
+        return $this->render('AppBundle:ExpenseType:create.html.twig', array(
             'form' => $form->createView()
         ));
     }
