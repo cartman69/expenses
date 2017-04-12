@@ -5,9 +5,19 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/theme.css') }}" />
+
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     </head>
     <body>
+        {% include 'menu.html.twig' %}
+        <div class="container theme-showcase" role="main">
         {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

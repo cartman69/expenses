@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Type</h1>
 
-    <table>
+    <table class="table table-condensed table-responsive">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -33,7 +33,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" class="btn btn-default">
             {{ form_end(delete_form) }}
         </li>
     </ul>
