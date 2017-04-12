@@ -5,6 +5,11 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+        <ul class="types">
+            {% for type in form.type %}
+            <li>{{ form_row(type.name) }}</li>
+            {% endfor %}
+        </ul>
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
