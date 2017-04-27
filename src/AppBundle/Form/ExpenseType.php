@@ -18,11 +18,12 @@ class ExpenseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('amount')->add('date')->add('merchant')->add('comment')->add('code')
-            ->add('type', EntityType::class,
+            ->add('type'/*, EntityType::class,
                 [
                     'class' => 'AppBundle:Expense\Type',
                     /*'by_reference' => true,*/
-                ]);
+                //]
+                );
     }
     
     /**
