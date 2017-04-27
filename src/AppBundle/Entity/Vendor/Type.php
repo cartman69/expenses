@@ -1,15 +1,14 @@
 <?php
 
-namespace AppBundle\Entity\Expense;
+namespace AppBundle\Entity\Vendor;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Type
  *
- * @ORM\Table(name="expense_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Expense\TypeRepository")
+ * @ORM\Table(name="vendor_type")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Vendor\TypeRepository")
  */
 class Type
 {
@@ -25,7 +24,7 @@ class Type
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=50, unique=true)
+     * @ORM\Column(name="code", type="string", length=50, nullable=true)
      */
     private $code;
 
@@ -44,14 +43,10 @@ class Type
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Expense", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Vendor", mappedBy="type")
      */
-    private $expenses;
+    private $vendors;
 
-    public function __construct()
-    {
-        $this->expenses = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -132,42 +127,8 @@ class Type
         return $this->description;
     }
 
-    /**
-     * Add expenses
-     *
-     * @param \AppBundle\Entity\Expense $expenses
-     * @return Type
-     */
-    public function addExpense(\AppBundle\Entity\Expense $expenses)
-    {
-        $this->expenses[] = $expenses;
-
-        return $this;
-    }
-
-    /**
-     * Remove expenses
-     *
-     * @param \AppBundle\Entity\Expense $expenses
-     */
-    public function removeExpense(\AppBundle\Entity\Expense $expenses)
-    {
-        $this->expenses->removeElement($expenses);
-    }
-
-    /**
-     * Get expenses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getExpenses()
-    {
-        return $this->expenses;
-    }
-
     public function __toString()
     {
-        // TODO: Implement __toString() method.
-        return (string) $this->name."(".$this->code.")";
+        return $this->getCode();
     }
 }

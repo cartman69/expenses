@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vendors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Comment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vendor in vendors %}
+            <tr>
+                <td><a href="{{ path('vendor_show', { 'id': vendor.id }) }}">{{ vendor.id }}</a></td>
+                <td>{{ vendor.name }}</td>
+                <td>{{ vendor.address }}</td>
+                <td>{{ vendor.comment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vendor_show', { 'id': vendor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vendor_edit', { 'id': vendor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vendor_new') }}">Create a new vendor</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -2,8 +2,10 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Form\Expense\TypeType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,10 +18,10 @@ class ExpenseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('amount')->add('date')->add('merchant')->add('comment')->add('code')
-            ->add('type', CollectionType::class,
+            ->add('type', EntityType::class,
                 [
-                    'entry_type' => TypeType::class,
-                    'allow_add' => true
+                    'class' => 'AppBundle:Expense\Type',
+                    /*'by_reference' => true,*/
                 ]);
     }
     

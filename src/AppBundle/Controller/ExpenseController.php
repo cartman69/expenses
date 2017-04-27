@@ -41,6 +41,9 @@ class ExpenseController extends Controller
     {
         $expense = new Expense();
         $form = $this->createForm('AppBundle\Form\ExpenseType', $expense);
+
+        $type = $request->get('type');
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,9 +54,25 @@ class ExpenseController extends Controller
             return $this->redirectToRoute('expense_show', array('id' => $expense->getId()));
         }
 
+        if ($form->isSubmitted() && !$form->isValid()) {
+            echo "<pre>";
+            var_dump($request);
+            foreach ($form->getErrors() as $error){
+                var_dump($error->getMessage());
+            }
+            die;
+        }
+
+        // We pass to the form all types of expenses so that we can generate the "type" combo
+        /*$types = $this->getDoctrine()
+                      ->getRepository('AppBundle:Expense\Type')
+                      ->findAll();*/
+        $form->add('type', 'entity', ['class' => 'AppBundle\Entity\Expense\Type', 'property' => 'name', 'read_only' => false]);
+
         return $this->render('expense/new.html.twig', array(
             'expense' => $expense,
             'form' => $form->createView(),
+            //'types' => $types,
         ));
     }
 
