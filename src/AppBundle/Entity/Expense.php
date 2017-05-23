@@ -26,7 +26,7 @@ class Expense
     /**
      * @var string
      *
-     * @ORM\Column(name="amount", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="amount", type="decimal", precision=10, scale=2)
      */
     private $amount;
 
@@ -36,6 +36,20 @@ class Expense
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime")
+     */
+    private $start_date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime")
+     */
+    private $end_date;
 
     /**
      * @var string
@@ -210,5 +224,53 @@ class Expense
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return Expense
+     */
+    public function setStartDate($startDate)
+    {
+        $this->start_date = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->start_date;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Expense
+     */
+    public function setEndDate($endDate)
+    {
+        $this->end_date = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->end_date;
     }
 }

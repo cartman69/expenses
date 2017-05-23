@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Expense\Type;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,20 @@ class Expense
     private $date;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime")
+     */
+    private $start_date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime")
+     */
+    private $end_date;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="merchant", type="string", length=255)
@@ -57,7 +73,7 @@ class Expense
     private $code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Expense\Type", inversedBy="expenses")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Expense\Type", inversedBy="expenses")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;

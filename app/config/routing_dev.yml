@@ -12,3 +12,41 @@ _errors:
 
 _main:
     resource: routing.yml
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/"
+
+login:
+    pattern:   /login
+    defaults:  { _controller: FOSUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+
+fos_change_password:
+    prefix:   /user_change_password
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+
+fos_group:
+    prefix:   /user_group
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+
+fos_profile:
+    prefix:   /user_profile
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+
+fos_user_registration:
+    prefix:   /user_registration
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+
+fos_resetting:
+    prefix:   /user_resetting
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+
+fos_security:
+    prefix:   /user_security
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
